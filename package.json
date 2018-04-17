@@ -1,0 +1,23 @@
+{
+  "name": "Curso_GONODE",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucasJorgeHubert/Curso_GONODE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LucasJorgeHubert/Curso_GONODE/issues"
+  },
+  "homepage": "https://github.com/LucasJorgeHubert/Curso_GONODE#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
