@@ -1,49 +1,27 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
 const path = require('path');
-const bodyParser = require('body-parser');
-const moment = require('moment');
+const routes = require('./app/routes');
+const session = require('express-session');
+const flash = require('connect-flash');
+const sessionConfig = require('./config/session');
 
 const app = express();
 
-nunjucks.configure('views', {
-    autoescape: true,
-    express: app
+app.use(express.static(path.resolve('app', 'public')));
+
+nunjucks.configure(path.resolve('app', 'views'), {
+  autoscape: true,
+  express: app,
 });
 
 app.set('view engine', 'njk');
-app.set('views', path.join(__dirname, 'views'));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(session(sessionConfig));
+app.use(flash());
 
-app.get('/', (req, res) =>{
-    res.render('main');
-});
-
-app.post('/check', (req,res) =>{
-  var a = moment(new Date());
-  var b = moment(req.body.age);
-  if (a.diff(b, 'years') >= 18) {
-    res.render('major', { nome : req.body.username });
-  }else{
-    res.render('minor', { nome : req.body.username });
-  }
-});
-
-const verificaPreenchimento = ((req,res,next)=> {
-  const user = req.body.username;
-  const age = req.body.age;
-  if (!user & !age){
-    res.render('main');
-  }
-});
-
-app.get('/major', verificaPreenchimento, (req, res) => {
-  res.render('major');
-});
-
-app.get('/minor', verificaPreenchimento, (req, res) => {
-  res.render('minor');
-});
+app.use('/', routes);
 
 app.listen(3000);

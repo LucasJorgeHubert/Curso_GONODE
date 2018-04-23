@@ -1,0 +1,19 @@
+{% extends 'layouts/default.njk' %}
+
+{% block body %}
+  <div class="container">
+  <form action="/authenticate" method="POST">
+    <div class="form-group">
+      <label for="Email">Insira seu email:</label>
+      <input type="email" class="form-control" name="email" id="Email" aria-describedby="emailHelpId" placeholder="Example@spotbom.com">
+      <small id="emailHelpId" class="form-text text-muted">Digite seu email</small>
+    </div>
+    <div class="form-group">
+      <label for="password">Insira sua senha: </label>
+      <input type="password" class="form-control" name="password" id="Password" placeholder="••••••">
+    </div>
+    <button type="submit" class="btn btn-primary">Logar</button>
+    <a href="/signup">Criar conta Grátis</a>
+    </form>
+  </div>
+{% endblock %}

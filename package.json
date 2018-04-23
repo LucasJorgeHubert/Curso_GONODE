@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -e js,json,njk"
   },
   "repository": {
     "type": "git",
@@ -18,14 +19,23 @@
   },
   "homepage": "https://github.com/LucasJorgeHubert/Curso_GONODE#readme",
   "dependencies": {
+    "bcrypt": "^2.0.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
     "express": "^4.16.3",
+    "express-session": "^1.15.6",
     "moment": "^2.22.1",
-    "nunjucks": "^3.1.2"
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
+    "nunjucks": "^3.1.2",
+    "sequelize": "^4.37.6"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.11.0"
+    "eslint-plugin-import": "^2.11.0",
+    "nodemon": "^1.17.3",
+    "sequelize-cli": "^4.0.0"
   }
 }

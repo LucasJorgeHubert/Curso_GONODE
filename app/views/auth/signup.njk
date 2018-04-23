@@ -1,0 +1,23 @@
+{% extends 'layouts/default.njk' %}
+
+{% block body %}
+  <div class="container">
+  <form action="/register" method="POST">
+    <div class="form-group">
+      <label for="Nome"></label>
+        <input type="text" class="form-control" name="name" id="Nome" aria-describedby="helpId" placeholder="Nome completo">
+      </div>
+    <div class="form-group">
+      <label for="Email">Insira seu email:</label>
+      <input type="email" class="form-control" name="email" id="Email" aria-describedby="emailHelpId" placeholder="Example@spotbom.com">
+      <small id="emailHelpId" class="form-text text-muted">Digite seu email</small>
+    </div>
+    <div class="form-group">
+      <label for="password">Insira sua senha: </label>
+      <input type="password" class="form-control" name="password" id="Password" placeholder="••••••">
+    </div>
+    <button type="submit" class="btn btn-primary">Criar</button>
+    <a href="/">Já tenho conta</a>
+    </form>
+  </div>
+{% endblock %}
