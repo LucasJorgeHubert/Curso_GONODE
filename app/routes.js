@@ -2,7 +2,9 @@ const express = require('express');
 
 const routes = express.Router();
 
-const AuthController = require('./controllers/AuthController');
+const authController = require('./controllers/authController');
+const dashboardController = require('./controllers/dashboardController');
+const authMiddleware = require('./middlewares/auth');
 
 routes.use((req, res, next) => {
   res.locals.flashSuccess = req.flash('success');
@@ -10,10 +12,15 @@ routes.use((req, res, next) => {
   next();
 });
 
-routes.get('/', AuthController.signin);
-routes.get('/signup', AuthController.signup);
+routes.get('/', authController.signin);
+routes.get('/signup', authController.signup);
+routes.get('/signout', authController.signout);
 
-routes.post('/register', AuthController.register);
-routes.post('/authenticate', AuthController.authenticate);
+routes.post('/register', authController.register);
+routes.post('/authenticate', authController.authenticate);
+
+routes.use('/app', authMiddleware);
+
+routes.get('/app/dashboard', dashboardController.index);
 
 module.exports = routes;
